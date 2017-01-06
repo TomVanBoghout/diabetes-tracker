@@ -22,19 +22,19 @@ export class DiabetesTrackerService {
 
   }
 
-  getPastWeek(): Observable<any> {
+  getLastDays(nrOfDays): Observable<any> {
     return this.af.database.list('/days', {
       query: {
-        limitToLast: 7,
+        limitToLast: nrOfDays,
         orderByKey: true
-    }}).map( (arr) => { return arr.reverse(); } );
+      }}).map( (arr) => { return arr.reverse(); } );
   }
 
   addToday() {
     let now = new Date();
     let date = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
 
-    this.af.database.list('days').push(
+    return this.af.database.list('days').push(
       {
         date: date,
         morning: {
@@ -68,47 +68,7 @@ export class DiabetesTrackerService {
     return this.af.database.list('/days/' + dayId + '/measurements');
   }
 
-  addMeasurement(dayId, measurement) {
-    this.af.database.list('/measurements/' + dayId + '/measurements').push( measurement);
+  saveDay(dayId, day) {
+    return this.af.database.object('/days/' + dayId ).set( day);
   }
-/*
-  getMeasurement(date: string) : FirebaseObjectObservable<any> {
-    return this.af.database.object('/calendar/' + date);
-  }
-
-
-
-  initToday(day) {
-    console.log("addDay", day);
-    let now = new Date();
-    let date = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
-
-    if (day.date !== date) {
-      //add new day => today
-      console.log("Add new date: today: " + date);
-      this._days.push({
-        date: date
-      });
-    } else {
-      this._today = this.af.database.object('days2/' + day.$key);
-    }
-  }
-
-  getLastDay() {
-    this.af.database.list('/days2',  {
-      query: {
-        limitToLast: 1,
-        orderByKey: true
-      }}).subscribe(day => {
-      if (day && day.length > 0) this.initToday(day[0]);
-    });
-  }
-
-  getToday() {
-    if (!this._today) {
-      this._today = this.af.database.object('days2/' + day.$key)
-    } ;
-    return this._today;
-  }
-*/
 }

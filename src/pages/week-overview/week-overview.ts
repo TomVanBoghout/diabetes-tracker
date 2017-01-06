@@ -4,6 +4,7 @@ import {DiabetesTrackerService} from "../../providers/diabetes-tracker-service";
 import {FirebaseListObservable} from "angularfire2";
 import {Observable} from "rxjs";
 import {IDay} from "../../datamodels/day";
+import {DayInputPage} from "../day-input/day-input";
 
 /*
   Generated class for the WeekOverview page.
@@ -31,25 +32,21 @@ export class WeekOverviewPage {
     });
 
     loader.present().then(() => {
-      this.week = this.dts.getPastWeek();
+      this.week = this.dts.getLastDays(7);
       this.week.subscribe(() => loader.dismiss());
     });
 
 
   }
 
+  navToDayInput(day) {
+    console.log("navigate to day input: ", day);
+    this.navCtrl.push(DayInputPage, day);
+  }
+
   addToday() {
     this.dts.addToday();
   }
 
-  addMeasurement(day) {
-    this.dts.addMeasurement(day.$key, {
-      "time": "morning",
-      "valueInitial": 105,
-      "valueAfter": 115,
-      "treatment": 20,
-      "treatmentExtra": 0
-    });
-  }
 
 }

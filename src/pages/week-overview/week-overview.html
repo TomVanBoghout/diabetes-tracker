@@ -18,12 +18,12 @@
   <button ion-button icon-only clear (click)="addToday()">
     <ion-icon name="add-circle" ></ion-icon>
   </button>
-  
+
   <ion-card  *ngFor='let day of week | async'>
     <!--<ion-card-header>{{day.date}}</ion-card-header>-->
     <ion-card-content >
 
-      <ion-grid>
+      <ion-grid (click)="navToDayInput(day)">
         <ion-row>
           <ion-col width-20><div>{{day.date}}</div></ion-col>
           <ion-col width-20><div><ion-icon name="pulse" ></ion-icon></div></ion-col>
