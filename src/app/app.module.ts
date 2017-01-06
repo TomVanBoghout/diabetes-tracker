@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { defaultFirebase, FIREBASE_PROVIDERS } from 'angularfire2';
 import {MeasurementPage} from "../pages/measurement/measurement";
 import {DiabetesTrackerService} from "../providers/diabetes-tracker-service";
+import {WeekOverviewPage} from "../pages/week-overview/week-overview";
 
 const COMMON_CONFIG = {
   apiKey: "AIzaSyBtDxMbK1gLaLn7Ads5Y1mpMcw40oSoRAo",
@@ -25,7 +26,8 @@ const COMMON_CONFIG = {
     ContactPage,
     HomePage,
     TabsPage,
-    MeasurementPage
+    MeasurementPage,
+    WeekOverviewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -37,7 +39,8 @@ const COMMON_CONFIG = {
     ContactPage,
     HomePage,
     TabsPage,
-    MeasurementPage
+    MeasurementPage,
+    WeekOverviewPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

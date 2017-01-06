@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {AngularFire} from "angularfire2";
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {DiabetesTrackerService} from "../../providers/diabetes-tracker-service";
 import {Observable} from "rxjs";
 
@@ -15,17 +15,19 @@ import {Observable} from "rxjs";
   templateUrl: 'measurement.html'
 })
 export class MeasurementPage {
-  date: string;
-  measurement: Observable<any>;
+  week: FirebaseListObservable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private dts: DiabetesTrackerService) {
     let now = new Date();
-    this.date = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
+    //this.date = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MeasurementPage');
-    this.measurement = this.dts.getMeasurement('2017-01-05');
+    //this.dts.getToday().subscribe(today => console.log("TODAY!! ", today));
+    //this.week = this.dts.getPastWeek();
+    console.log("blahh");
+
   }
 
 }

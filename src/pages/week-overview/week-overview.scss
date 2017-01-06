@@ -1,0 +1,16 @@
+page-week-overview {
+
+  .treatment {
+    background : color($colors, treatment, base);
+  }
+  .measurement {
+    background : color($colors, measurement, base);
+  }
+
+  ion-col div {
+    margin: 1px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+  }
+
+}

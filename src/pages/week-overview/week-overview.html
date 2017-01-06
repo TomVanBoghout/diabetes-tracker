@@ -1,0 +1,69 @@
+<!--
+  Generated template for the WeekOverview page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Week overview</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content text-center>
+  <button ion-button icon-only clear (click)="addToday()">
+    <ion-icon name="add-circle" ></ion-icon>
+  </button>
+  
+  <ion-card  *ngFor='let day of week | async'>
+    <!--<ion-card-header>{{day.date}}</ion-card-header>-->
+    <ion-card-content >
+
+      <ion-grid>
+        <ion-row>
+          <ion-col width-20><div>{{day.date}}</div></ion-col>
+          <ion-col width-20><div><ion-icon name="pulse" ></ion-icon></div></ion-col>
+          <ion-col width-20><div><ion-icon name="medkit" ></ion-icon></div></ion-col>
+          <ion-col width-20><div><ion-icon name="add" ></ion-icon></div></ion-col>
+          <ion-col width-20><div><ion-icon name="pulse" ></ion-icon></div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20 no-padding><div><ion-icon name="partly-sunny" ></ion-icon></div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.morning?.valueInitial }}</div></ion-col>
+          <!--<ion-col width-20 no-padding><div class="measurement"><input>{{day.morning?.valueInitial }}</div></ion-col>-->
+          <ion-col width-20 no-padding><div class="treatment">{{day.morning?.treatment }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.morning?.treatmentExtra }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.morning?.valueAfter }}</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20 no-padding><div><ion-icon name="sunny" ></ion-icon></div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.noon?.valueInitial }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.noon?.treatment }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.noon?.treatmentExtra }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.noon?.valueAfter }}</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20 no-padding><div><ion-icon name="cloudy-night" ></ion-icon></div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.evening?.valueInitial }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.evening?.treatment }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.evening?.treatmentExtra }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.evening?.valueAfter }}</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20 no-padding><div><ion-icon name="moon" ></ion-icon></div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.night?.valueInitial }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.night?.treatment }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="treatment">{{day.night?.treatmentExtra }}</div></ion-col>
+          <ion-col width-20 no-padding><div class="measurement">{{day.night?.valueAfter }}</div></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
